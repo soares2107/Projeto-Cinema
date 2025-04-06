@@ -31,7 +31,7 @@ Acesse: [http://localhost:8080](http://localhost:8080)
 ## 📁 Estrutura do projeto
 
 ```
-cinema/
+Trabalho-cinema/
 ├── index.html
 ├── cadastro-filmes.html
 ├── cadastro-salas.html
@@ -40,6 +40,7 @@ cinema/
 ├── sessoes.html
 ├── css/
 │   └── style.css
+├── assets/
 ├── js/
 │   ├── filmes.js
 │   ├── salas.js
@@ -53,7 +54,7 @@ cinema/
 
 ## 📌 Próximas etapas
 
-- ✅ Separação de scripts em arquivos externos
+
 - ✅ Dockerização com NGINX
 - ⏳ Validação de dados no front-end
 - ⏳ Melhorias visuais e responsividade total
@@ -61,4 +62,4 @@ cinema/
 
 ---
 
-Feito com 💻 por [Seu Nome]
+Feito com 💻 por [Joao Gabriel Soares]
