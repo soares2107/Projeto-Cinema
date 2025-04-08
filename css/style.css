@@ -1,0 +1,42 @@
+/* Estilo personalizado para imagens dos cards de filmes */
+.card-img-container {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+  
+  .card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Espaçamento extra nos cards (opcional) */
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilo para o título da sessão */
+  .card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+  
+  /* Estilo para a lista de detalhes do filme */
+  .card ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .card ul li {
+    margin-bottom: 0.25rem;
+  }
+  
+  /* Responsividade adicional (opcional) */
+  @media (max-width: 576px) {
+    .card-img-container {
+      aspect-ratio: 4 / 3;
+    }
+  }

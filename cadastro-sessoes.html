@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cadastro de Sessões</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
   <!-- Navbar -->
@@ -85,59 +87,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Script -->
-  <script>
-    // Carregar filmes e salas do localStorage
-    function carregarOpcoes() {
-      const filmes = JSON.parse(localStorage.getItem('filmes') || '[]');
-      const salas = JSON.parse(localStorage.getItem('salas') || '[]');
-
-      const selectFilme = document.getElementById('filme');
-      filmes.forEach((filme, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = filme.titulo;
-        selectFilme.appendChild(option);
-      });
-
-      const selectSala = document.getElementById('sala');
-      salas.forEach((sala, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = sala.nome;
-        selectSala.appendChild(option);
-      });
-    }
-
-    // Salvar sessão
-    document.getElementById('form-sessao').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const sessao = {
-        filmeIndex: document.getElementById('filme').value,
-        salaIndex: document.getElementById('sala').value,
-        dataHora: document.getElementById('dataHora').value,
-        preco: parseFloat(document.getElementById('preco').value),
-        idioma: document.getElementById('idioma').value,
-        formato: document.getElementById('formato').value
-      };
-
-      const sessoes = JSON.parse(localStorage.getItem('sessoes') || '[]');
-      sessoes.push(sessao);
-      localStorage.setItem('sessoes', JSON.stringify(sessoes));
-
-      document.getElementById('alerta').classList.remove('d-none');
-      document.getElementById('form-sessao').reset();
-
-      setTimeout(() => {
-        document.getElementById('alerta').classList.add('d-none');
-      }, 3000);
-    });
-
-    window.onload = carregarOpcoes;
-  </script>
-
+  <script src="js/sessoes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
