@@ -9,29 +9,19 @@ window.addEventListener('load', () => {
     if (!filme || !sala) return;
     const dataFormatada = new Date(sessao.dataHora).toLocaleString('pt-BR');
     const card = document.createElement('div');
-    card.className = 'col-md-4';
+    card.className = 'col-md-3';
     card.innerHTML = `
-      <div class="card mb-4 shadow-sm">
-        <div class="ratio ratio-16x9">
-          <img src="${filme.imagem}" alt="${filme.titulo}" 
-     class="img-fluid"
-     data-bs-toggle="tooltip" 
-     title="${filme.descricao}">
-
-        </div>
+  <div class="card mb-4 shadow-sm card-filme" style="width: 18rem;">
+        <img src="${filme.imagem}" class="card-img-top" alt="${filme.titulo}">
         <div class="card-body">
           <h5 class="card-title">${filme.titulo}</h5>
           <p class="card-text">${filme.descricao}</p>
-          <ul class="list-unstyled mb-3">
+          <ul class="list-unstyled">
             <li><strong>Gênero:</strong> ${filme.genero}</li>
-            <li><strong>Classificação:</strong> ${filme.classificacao}</li>
             <li><strong>Duração:</strong> ${filme.duracao} min</li>
-            <li><strong>Sala:</strong> ${sala.nome}</li>
-            <li><strong>Data/Hora:</strong> ${dataFormatada}</li>
-            <li><strong>Idioma:</strong> ${sessao.idioma}</li>
-            <li><strong>Formato:</strong> ${sessao.formato}</li>
-            <li><strong>Preço:</strong> R$ ${sessao.preco.toFixed(2)}</li>
+            <li><strong>Classificação:</strong> ${filme.classificacao}</li>
           </ul>
+          <a href="venda-ingressos.html" class="btn btn-primary w-100">Comprar Ingressos</a>
         </div>
       </div>
     `;

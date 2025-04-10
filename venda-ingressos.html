@@ -11,16 +11,17 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container">
-      <a class="navbar-brand" href="index.html">🎬 Cinema</a>
+      <a class="navbar-brand" href="index.html">🎬 CodeFlix</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Alinha os links à direita no desktop -->
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="cadastro-filmes.html">Cadastro de Filmes</a></li>
           <li class="nav-item"><a class="nav-link" href="cadastro-salas.html">Cadastro de Salas</a></li>
           <li class="nav-item"><a class="nav-link" href="cadastro-sessoes.html">Cadastro de Sessões</a></li>
-          <li class="nav-item"><a class="nav-link active" href="venda-ingressos.html">Venda de Ingressos</a></li>
+          <li class="nav-item"><a class="nav-link" href="venda-ingressos.html">Venda de Ingressos</a></li>
           <li class="nav-item"><a class="nav-link" href="sessoes.html">Sessões Disponíveis</a></li>
         </ul>
       </div>
@@ -52,7 +53,7 @@
               </div>
               <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" required />
+                <input type="text" class="form-control" id="cpf" maxlength="14" placeholder="000.000.000-00" required />
               </div>
               <div class="mb-3">
                 <label for="assento" class="form-label">Assento (ex: A10)</label>
@@ -71,6 +72,22 @@
                 <button type="submit" class="btn btn-success">Confirmar Venda</button>
               </div>
             </form>
+            <hr />
+            <h5 class="mt-4">Ingressos Vendidos</h5>
+            <div class="table-responsive">
+              <table class="table table-striped" id="tabela-ingressos">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>CPF</th>
+                    <th>Assento</th>
+                    <th>Pagamento</th>
+                    <th>Sessão</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
