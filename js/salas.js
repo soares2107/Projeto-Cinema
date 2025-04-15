@@ -1,29 +1,36 @@
-document.getElementById('form-sala').addEventListener('submit', function (e) {
+document.getElementById("form-sala").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const indexEdicao = document.getElementById('form-sala').dataset.index;
+  const indexEdicao = document.getElementById("form-sala").dataset.index;
 
   const sala = {
-    nome: document.getElementById('nome').value,
-    capacidade: parseInt(document.getElementById('capacidade').value),
-    tipo: document.getElementById('tipo').value
+    nome: document.getElementById("nome").value,
+    capacidade: parseInt(document.getElementById("capacidade").value),
+    tipo: document.getElementById("tipo").value,
   };
 
-  let salas = JSON.parse(localStorage.getItem('salas') || '[]');
+  let salas = JSON.parse(localStorage.getItem("salas") || "[]");
 
   if (indexEdicao) {
     salas[indexEdicao] = sala;
-    document.getElementById('form-sala').dataset.index = '';
+    document.getElementById("form-sala").dataset.index = "";
+
+    // ✅ Alerta para edição
+    document.getElementById("alerta").textContent = "Sala editada com sucesso!";
   } else {
     salas.push(sala);
+
+    // ✅ Alerta para cadastro
+    document.getElementById("alerta").textContent =
+      "Sala cadastrada com sucesso!";
   }
 
-  localStorage.setItem('salas', JSON.stringify(salas));
+  localStorage.setItem("salas", JSON.stringify(salas));
 
-  document.getElementById('form-sala').reset();
-  document.getElementById('alerta').classList.remove('d-none');
+  document.getElementById("form-sala").reset();
+  document.getElementById("alerta").classList.remove("d-none");
   setTimeout(() => {
-    document.getElementById('alerta').classList.add('d-none');
+    document.getElementById("alerta").classList.add("d-none");
   }, 2000);
 
   listarSalas();
@@ -31,12 +38,12 @@ document.getElementById('form-sala').addEventListener('submit', function (e) {
 
 // Listar
 function listarSalas() {
-  const salas = JSON.parse(localStorage.getItem('salas') || '[]');
-  const tbody = document.getElementById('tabela-salas');
-  tbody.innerHTML = '';
+  const salas = JSON.parse(localStorage.getItem("salas") || "[]");
+  const tbody = document.getElementById("tabela-salas");
+  tbody.innerHTML = "";
 
   salas.forEach((sala, index) => {
-    const tr = document.createElement('tr');
+    const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${sala.nome}</td>
       <td>${sala.capacidade}</td>
@@ -52,25 +59,33 @@ function listarSalas() {
 
 // Editar
 function editarSala(index) {
-  const salas = JSON.parse(localStorage.getItem('salas') || '[]');
+  const salas = JSON.parse(localStorage.getItem("salas") || "[]");
   const sala = salas[index];
 
-  document.getElementById('nome').value = sala.nome;
-  document.getElementById('capacidade').value = sala.capacidade;
-  document.getElementById('tipo').value = sala.tipo;
+  document.getElementById("nome").value = sala.nome;
+  document.getElementById("capacidade").value = sala.capacidade;
+  document.getElementById("tipo").value = sala.tipo;
 
-  document.getElementById('form-sala').dataset.index = index;
+  document.getElementById("form-sala").dataset.index = index;
 }
 
 // Excluir
 function excluirSala(index) {
-  if (confirm('Deseja excluir esta sala?')) {
-    const salas = JSON.parse(localStorage.getItem('salas') || '[]');
+  if (confirm("Deseja excluir esta sala?")) {
+    const salas = JSON.parse(localStorage.getItem("salas") || "[]");
     salas.splice(index, 1);
-    localStorage.setItem('salas', JSON.stringify(salas));
+    localStorage.setItem("salas", JSON.stringify(salas));
     listarSalas();
+
+    // ✅ Alerta para exclusão
+    document.getElementById("alerta").textContent =
+      "Sala excluída com sucesso!";
+    document.getElementById("alerta").classList.remove("d-none");
+    setTimeout(() => {
+      document.getElementById("alerta").classList.add("d-none");
+    }, 2000);
   }
 }
 
 // Inicializar
-window.addEventListener('load', listarSalas);
+window.addEventListener("load", listarSalas);
